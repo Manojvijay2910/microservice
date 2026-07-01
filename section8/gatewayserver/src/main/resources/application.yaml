@@ -11,6 +11,11 @@ spring:
             locator:
               enabled: false
               lowerCaseServiceId: true
+  rabbitmq:
+    host: "rabbit"
+    port: 5672
+    username: "guest"
+    password: "guest"
 
 management:
   endpoints:
