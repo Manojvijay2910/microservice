@@ -1,4 +1,16 @@
 services:
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      timeout: 10s
+      retries: 10
+    extends:
+      file: common-config.yaml
+      service: network-deploy-service
+
   rabbit:
     image: rabbitmq:3.13-management
     hostname: rabbitmq
@@ -46,7 +58,7 @@ services:
       service: microservice-db-config
 
   configserver:
-    image: "jacky2910/configserver:s9"
+    image: "jacky2910/configserver:s10"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -64,7 +76,7 @@ services:
       service: microservice-base-config
 
   eurekaserver:
-    image: "jacky2910/eurekaserver:s9"
+    image: "jacky2910/eurekaserver:s10"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -81,7 +93,7 @@ services:
       service: microservice-configserver-config
 
   accounts:
-    image: "jacky2910/accounts:s9"
+    image: "jacky2910/accounts:s10"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -102,7 +114,7 @@ services:
       service: microservice-eureka-config
 
   loans:
-    image: "jacky2910/loans:s9"
+    image: "jacky2910/loans:s10"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -123,7 +135,7 @@ services:
       service: microservice-eureka-config
 
   cards:
-    image: "jacky2910/cards:s9"
+    image: "jacky2910/cards:s10"
     container_name: cards-ms
     ports:
       - "9000:9000"
@@ -144,7 +156,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "jacky2910/gatewayserver:s9"
+    image: "jacky2910/gatewayserver:s10"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
@@ -155,8 +167,14 @@ services:
         condition: service_healthy
       loans:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      SPRING_DATA_REDIS_CONNECTION_TIMEOUT: 2s
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_TIMEOUT: 1s
     extends:
       file: common-config.yaml
       service: microservice-eureka-config
