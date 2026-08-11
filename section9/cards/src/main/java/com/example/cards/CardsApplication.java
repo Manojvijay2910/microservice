@@ -9,9 +9,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 /*@ComponentScans({ @ComponentScan("com.eazybytes.cards.controller") })
 @EnableJpaRepositories("com.eazybytes.cards.repository")
 @EntityScan("com.eazybytes.cards.model")*/

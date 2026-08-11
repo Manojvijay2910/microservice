@@ -85,7 +85,7 @@
 				<version>3.5.2</version>
 				<configuration>
 					<to>
-						<image>jacky2910/${project.artifactId}:s14</image>
+						<image>jacky2910/${project.artifactId}:s16</image>
 					</to>
 				</configuration>
 			</plugin>
