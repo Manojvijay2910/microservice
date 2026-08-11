@@ -20,11 +20,16 @@ spring:
       host: localhost
       port: 6379
       timeout: 1s
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:7080/realms/master/protocol/openid-connect/certs
   rabbitmq:
-    host: "rabbit"
+    host: rabbit
     port: 5672
-    username: "guest"
-    password: "guest"
+    username: guest
+    password: guest
 
 management:
   endpoints:

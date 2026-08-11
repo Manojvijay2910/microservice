@@ -17,10 +17,10 @@ spring:
           clone-on-start: true
           force-pull: true
   rabbitmq:
-    host: "rabbit"
+    host: rabbit
     port: 5672
-    username: "guest"
-    password: "guest"
+    username: guest
+    password: guest
 
 management:
   endpoints:
