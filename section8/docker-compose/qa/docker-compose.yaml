@@ -329,9 +329,9 @@ services:
       timeout: 5s
       retries: 10
       start_period: 10s
-    depends_on:
-      rabbit:
-        condition: service_healthy
+    #depends_on:
+    #  rabbit:
+    #    condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "configserver"
       OTEL_SERVICE_NAME: "configserver"

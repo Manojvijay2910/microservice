@@ -33,12 +33,12 @@ spring:
         binder:
           brokers:
             - localhost:9092
-  rabbitmq:
-    host: rabbit
-    port: 5672
-    username: guest
-    password: guest
-    connection-timeout: 10s
+  #rabbitmq:
+  #  host: rabbit
+  #  port: 5672
+  #  username: guest
+  #  password: guest
+  #  connection-timeout: 10s
 
 management:
   endpoints:

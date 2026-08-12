@@ -25,11 +25,11 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:7080/realms/master/protocol/openid-connect/certs
-  rabbitmq:
-    host: rabbit
-    port: 5672
-    username: guest
-    password: guest
+  #rabbitmq:
+  #  host: rabbit
+  #  port: 5672
+  #  username: guest
+  #  password: guest
 
 management:
   endpoints:

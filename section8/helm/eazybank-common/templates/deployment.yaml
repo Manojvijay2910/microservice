@@ -48,11 +48,11 @@ spec:
             #      key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
             #{{- end }}
             {{- if .Values.discovery_enabled }}
-            - name: SPRING_CLOUD_KUBERNETES_DISCOVERY_SERVER_URL
+            - name: SPRING_CLOUD_KUBERNETES_DISCOVERY_DISCOVERY_SERVER_URL
               valueFrom:
                 configMapKeyRef:
                   name: {{ .Values.global.configMapName }}
-                  key: SPRING_CLOUD_KUBERNETES_DISCOVERY_SERVER_URL
+                  key: SPRING_CLOUD_KUBERNETES_DISCOVERY_DISCOVERY_SERVER_URL
             {{- end }}
             {{- if .Values.resourceserver_enabled }}
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI
