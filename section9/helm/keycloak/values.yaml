@@ -10,8 +10,8 @@ service:
   port: 80
 
 admin:
-  username: user
-  password: password
+  username: admin
+  password: admin
 
 # Keycloak command arguments
 # Use "start-dev" for development mode
