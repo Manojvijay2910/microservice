@@ -1,26 +1,25 @@
 server:
-  port: 9000
+  port: 8090
 spring:
   application:
-    name: "cards"
+    name: "loans"
   profiles:
     active: "prod"
   datasource:
-    url: jdbc:mysql://localhost:3308/cardsdb
-    username: root
-    password: root
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
     show-sql: true
-  sql:
-    init:
-      mode: always
   config:
     import: "optional:configserver:http://localhost:8071/"
-  #rabbitmq:
-  #  host: rabbit
-  #  port: 5672
-  #  username: guest
-  #  password: guest
 
 management:
   endpoints:
@@ -56,14 +55,14 @@ eureka:
 
 info:
   app:
-    name: "cards"
-    description: "Cards Microservice"
+    name: "loans"
+    description: "Loans Microservice"
     version: "1.0.0"
 
 logging:
   level:
     com:
       example:
-        cards: DEBUG
+        loans: DEBUG
   pattern:
     level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
